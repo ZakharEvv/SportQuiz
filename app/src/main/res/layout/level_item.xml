@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="15dp"
+    app:cardCornerRadius="15dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_level_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Уровень 1"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="15dp"/>
+
+        <ImageView
+            android:id="@+id/image_arrow_level"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/arrow_level"
+            android:layout_marginEnd="15dp"/>
+
+        <ImageView
+            android:id="@+id/image_lock_level"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/lock_level"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginEnd="15dp"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:id="@+id/image_completed_level"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/level_completed_icon"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginEnd="15dp"
+            android:visibility="invisible"/>
+    </FrameLayout>
+
+
+
+</androidx.cardview.widget.CardView>
