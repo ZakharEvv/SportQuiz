@@ -1,7 +1,6 @@
 package com.example.sportquiz.presentation.viewmodels
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import com.example.sportquiz.data.QuizRepositoryImpl
 import com.example.sportquiz.domain.model.QuizLevel

@@ -16,14 +16,14 @@
             android:layout_height="45dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
-            app:cardCornerRadius="6dp"
+            app:cardCornerRadius="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/user_icon_default" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Популярные викторины"
+                android:text="Popular quizzes"
                 android:textSize="16sp"
                 android:layout_marginTop="75dp"
                 android:textColor="@color/black"
@@ -87,7 +87,7 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:lines="2"
-                            android:text="Изучить правила"
+                            android:text="Learn the rules"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
 

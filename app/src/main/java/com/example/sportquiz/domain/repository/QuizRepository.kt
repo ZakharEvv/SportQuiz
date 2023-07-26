@@ -1,7 +1,6 @@
 package com.example.sportquiz.domain.repository
 
 import android.content.Context
-import androidx.lifecycle.LiveData
 import com.example.sportquiz.domain.model.QuizLevel
 import com.example.sportquiz.domain.model.QuizQuestion
 import com.example.sportquiz.domain.model.SportCategory

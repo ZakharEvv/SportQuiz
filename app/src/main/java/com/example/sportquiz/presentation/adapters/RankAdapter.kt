@@ -1,6 +1,5 @@
 package com.example.sportquiz.presentation.adapters
 
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +51,16 @@ class RankAdapter : RecyclerView.Adapter<RankAdapter.RankViewHolder>() {
         }
 
         holder.tvName.text = user.name
-        holder.tvRank.text = "${user.rank} XP"
+        holder.tvRank.text = buildString {
+            append(user.rank)
+            append(" XP")
+        }
+        holder.imageAvatar.setImageDrawable(
+            ContextCompat.getDrawable(
+                holder.itemView.context,
+                user.avatar
+            )
+        )
     }
 
     override fun getItemCount(): Int {

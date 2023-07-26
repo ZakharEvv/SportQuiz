@@ -4,14 +4,26 @@ import com.example.sportquiz.R
 import com.example.sportquiz.domain.model.QuizLevel
 import com.example.sportquiz.domain.model.QuizQuestion
 import com.example.sportquiz.domain.model.SportCategory
+import com.example.sportquiz.domain.model.User
 
 object Database {
 
+    val users = listOf(
+        User("Paisley Morris", R.drawable.user_icon_default, 200),
+        User("Hailey Kaufman", R.drawable.user_icon_default, 300),
+        User("Kamari Wigginsa", R.drawable.user_icon_default, 400),
+        User("Gideon Ballard", R.drawable.user_icon_default, 500),
+        User("Jayda Martinez", R.drawable.user_icon_default, 600),
+        User("Aliana Taylor", R.drawable.user_icon_default, 200),
+        User("Eliana Keller", R.drawable.user_icon_default, 0),
+        User("Perla Raymond", R.drawable.user_icon_default, 0)
+    )
+
     val sportCategories = listOf(
-        SportCategory("Basketball", R.drawable.category_basketball),
-        SportCategory("Hockey", R.drawable.categoty_hockey),
-        SportCategory("Football", R.drawable.category_football),
-        SportCategory("Karate", R.drawable.category_carate)
+        SportCategory("Basketball", R.drawable.category_basketball, R.drawable.basketball_poster),
+        SportCategory("Hockey", R.drawable.categoty_hockey, R.drawable.hockey_poster),
+        SportCategory("Football", R.drawable.category_football, R.drawable.football_poster),
+        SportCategory("Karate", R.drawable.category_carate, R.drawable.karate_poster)
     )
 
     val quizLevels = listOf(

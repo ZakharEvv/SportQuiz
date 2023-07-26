@@ -1,16 +1,12 @@
 package com.example.sportquiz.presentation.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.TextureView
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.lifecycle.ViewModelProvider
 import com.example.sportquiz.R
-import com.example.sportquiz.presentation.viewmodels.QuizResultViewModel
 
 class QuizResultFragment(_receivedRank: Int, _correctAnswers: Int, _questions: Int) : Fragment() {
 
@@ -30,16 +26,39 @@ class QuizResultFragment(_receivedRank: Int, _correctAnswers: Int, _questions: I
 
         initViews(view)
         setupListeners()
-        tvRank.text = "+ $receivedRank XP"
-        tvCorrectAnswers.text = "$correctAnswers/$questions"
+        refreshUI()
 
         return view
     }
 
+    private fun refreshUI() {
+        tvRank.text = buildString {
+            append("+ ")
+            append(receivedRank)
+            append(" XP")
+        }
+        tvCorrectAnswers.text = buildString {
+            append(correctAnswers)
+            append("/")
+            append(questions)
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupListeners() {
-        btnExit.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.fragment_container, MainFragment())?.commit()
+        btnExit.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    view.animate().scaleX(0.9f).scaleY(0.9f).setDuration(100).start()
+                }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    view.animate().scaleX(1f).scaleY(1f).setDuration(100).withEndAction {
+                        activity?.supportFragmentManager?.beginTransaction()
+                            ?.replace(R.id.fragment_container, MainFragment())?.commit()
+                    }.start()
+                }
+            }
+            true
         }
     }
 

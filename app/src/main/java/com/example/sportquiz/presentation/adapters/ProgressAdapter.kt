@@ -43,9 +43,18 @@ class ProgressAdapter : RecyclerView.Adapter<ProgressAdapter.ProgressViewHolder>
         val progress = progressList[position]
         val levels = levelsList[position]
 
-        holder.imageCategory.setImageDrawable(ContextCompat.getDrawable(holder.itemView.context, category.image))
+        holder.imageCategory.setImageDrawable(
+            ContextCompat.getDrawable(
+                holder.itemView.context,
+                category.image
+            )
+        )
         holder.tvCategory.text = category.name
-        holder.tvProgress.text = "$progress/$levels"
+        holder.tvProgress.text = buildString {
+            append(progress)
+            append("/")
+            append(levels)
+        }
     }
 
     override fun getItemCount(): Int {

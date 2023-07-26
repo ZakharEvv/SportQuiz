@@ -1,5 +1,6 @@
 package com.example.sportquiz.presentation.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,6 +18,19 @@ class MainActivity : AppCompatActivity() {
         initViews()
         setupListeners()
         loadFragment(MainFragment())
+        showOnboarding()
+    }
+
+    private fun showOnboarding() {
+        val sharedPrefs = getSharedPreferences("quiz_preferences", MODE_PRIVATE)
+        val isShowed = sharedPrefs.getBoolean("is_onboarding_showed", false)
+        if (!isShowed) {
+            val intent = Intent(applicationContext, OnboardingActivity::class.java)
+            startActivity(intent)
+            val editor = sharedPrefs.edit()
+            editor.putBoolean("is_onboarding_showed", true)
+            editor.apply()
+        }
     }
 
     private fun initViews() {
@@ -24,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        bottomBar.onItemSelectedListener = { view: View, menuItem: MenuItem, b: Boolean ->
+        bottomBar.onItemSelectedListener = { _: View, menuItem: MenuItem, b: Boolean ->
             when (menuItem.id) {
                 R.id.menu_main -> loadFragment(MainFragment())
                 R.id.menu_rank -> loadFragment(RankFragment())
@@ -32,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        bottomBar.onItemReselectedListener = { view: View, menuItem: MenuItem, b: Boolean ->
+        bottomBar.onItemReselectedListener = { _: View, menuItem: MenuItem, b: Boolean ->
             when (menuItem.id) {
                 R.id.menu_main -> loadFragment(MainFragment())
                 R.id.menu_rank -> loadFragment(RankFragment())
@@ -42,8 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment)
             .commit()
     }
 }

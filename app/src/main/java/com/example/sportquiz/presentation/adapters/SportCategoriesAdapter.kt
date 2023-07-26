@@ -2,7 +2,6 @@ package com.example.sportquiz.presentation.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
@@ -10,11 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.sportquiz.R
 import com.example.sportquiz.domain.model.SportCategory
-import com.example.sportquiz.presentation.ui.RankFragment
 
 class SportCategoriesAdapter :
     RecyclerView.Adapter<SportCategoriesAdapter.SportCategoriesViewHolder>() {
@@ -48,10 +45,6 @@ class SportCategoriesAdapter :
             it.startAnimation(scaleAnim)
             onItemClickListener?.invoke(category)
         }
-    }
-
-    interface OnItemClickListener {
-        fun onItemClick(category: SportCategory)
     }
 
     override fun getItemCount(): Int {

@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -51,7 +50,7 @@ class LevelFragment(sportCategory: SportCategory) : Fragment() {
         adapter.levels = viewModel.getLevelsUseCase(category.name)
         adapter.onItemClickListener = {
             activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.fragment_container, QuizFragment(it))?.commit()
+                ?.replace(R.id.fragment_container, QuizFragment(it, category))?.commit()
         }
         recyclerView.adapter = adapter
     }

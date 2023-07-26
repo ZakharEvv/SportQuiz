@@ -3,7 +3,6 @@ package com.example.sportquiz.presentation.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.example.sportquiz.data.QuizRepositoryImpl
-import com.example.sportquiz.domain.model.QuizLevel
 import com.example.sportquiz.domain.model.SportCategory
 import com.example.sportquiz.domain.model.User
 import com.example.sportquiz.domain.usecases.GetCategoriesUseCase

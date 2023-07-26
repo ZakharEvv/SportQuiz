@@ -9,12 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.sportquiz.R
 import com.example.sportquiz.domain.model.QuizLevel
-import com.example.sportquiz.domain.model.SportCategory
-import com.example.sportquiz.presentation.ui.RankFragment
 
 class LevelsAdapter : RecyclerView.Adapter<LevelsAdapter.LevelsViewHolder>() {
 
@@ -36,7 +33,10 @@ class LevelsAdapter : RecyclerView.Adapter<LevelsAdapter.LevelsViewHolder>() {
 
     override fun onBindViewHolder(holder: LevelsViewHolder, position: Int) {
         val level = levels[position]
-        holder.tvLevel.text = "Level ${level.level}"
+        holder.tvLevel.text = buildString {
+            append("Level ")
+            append(level.level)
+        }
         if (level.level == progress + 1) {
             setUnlockedListener(holder, level)
             holder.imageArrow.visibility = View.VISIBLE
@@ -87,10 +87,6 @@ class LevelsAdapter : RecyclerView.Adapter<LevelsAdapter.LevelsViewHolder>() {
 
     override fun getItemCount(): Int {
         return levels.size
-    }
-
-    interface OnItemClickListener {
-        fun onItemClick(level: QuizLevel)
     }
 
     class LevelsViewHolder(itemView: View) : ViewHolder(itemView) {

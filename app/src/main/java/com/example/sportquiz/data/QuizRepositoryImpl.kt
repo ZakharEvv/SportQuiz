@@ -1,8 +1,6 @@
 package com.example.sportquiz.data
 
 import android.content.Context
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.sportquiz.R
 import com.example.sportquiz.domain.model.QuizLevel
 import com.example.sportquiz.domain.model.QuizQuestion
@@ -13,18 +11,9 @@ import com.example.sportquiz.domain.repository.QuizRepository
 object QuizRepositoryImpl : QuizRepository {
 
     private val sportCategories = Database.sportCategories
-
     private val quizLevels = Database.quizLevels
-
     private val quizQuestions = Database.quizQuestions
-
-    private val users = listOf(
-        User("Aboba boba", R.drawable.categoty_hockey, 200),
-        User("Aboba boba", R.drawable.categoty_hockey, 300),
-        User("Aboba boba", R.drawable.categoty_hockey, 400),
-        User("Aboba boba", R.drawable.categoty_hockey, 500),
-        User("Aboba boba", R.drawable.categoty_hockey, 600)
-    )
+    private val users = Database.users
 
     private const val PREFERENCES = "quiz_preferences"
 
@@ -55,14 +44,14 @@ object QuizRepositoryImpl : QuizRepository {
     override fun getUser(context: Context): User {
         val sharedPrefs = context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
         val rank = sharedPrefs.getInt("user_rank", 0)
-        return User("user123", R.drawable.category_football, rank)
+        return User("user123", R.drawable.user_icon_default, rank)
     }
 
     override fun saveUserRank(context: Context, rank: Int) {
         val sharedPrefs = context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
         val savedRank = sharedPrefs.getInt("user_rank", 0)
         val editor = sharedPrefs.edit()
-        editor.putInt("user_rank", rank+savedRank)
+        editor.putInt("user_rank", rank + savedRank)
         editor.apply()
     }
 

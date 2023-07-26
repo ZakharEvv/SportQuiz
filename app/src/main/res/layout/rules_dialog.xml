@@ -3,25 +3,29 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:orientation="vertical"
-    android:background="#29304D">
+    android:background="#29304D"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:text="Rules"
         android:layout_gravity="center"
-        android:layout_marginTop="14dp"/>
+        android:layout_marginTop="14dp"
+        android:text="Rules"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxWidth="200dp"
         android:layout_margin="30dp"
-        android:textColor="@color/white"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."/>
+        android:maxWidth="200dp"
+        android:text="Choose a category and complete the quiz levels.
+        \nThe next level opens after completing the previous level.
+        \nEarn experience by answering all level questions correctly.
+        \nThe experience will be displayed in the leaderboard and your personal account.
+        \nIn your personal account, see the progress in levels for each of the categories."
+        android:textColor="@color/white" />
 
 
 </LinearLayout>

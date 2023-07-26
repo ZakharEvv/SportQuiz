@@ -16,7 +16,7 @@ import com.example.sportquiz.presentation.adapters.ProgressAdapter
 import com.example.sportquiz.presentation.viewmodels.ProfileViewModel
 
 
-class ProfileFragment() : Fragment() {
+class ProfileFragment : Fragment() {
 
     private lateinit var imageProfile: ImageView
     private lateinit var tvName: TextView
@@ -43,7 +43,10 @@ class ProfileFragment() : Fragment() {
     ) {
         val user = viewModel.getUser()
         tvName.text = user.name
-        tvRank.text = "${user.rank} XP"
+        tvRank.text = buildString {
+            append(user.rank)
+            append(" XP")
+        }
         imageProfile.setImageDrawable(ContextCompat.getDrawable(view.context, user.avatar))
     }
 

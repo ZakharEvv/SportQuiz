@@ -21,7 +21,7 @@ class RankViewModel(application: Application) : AndroidViewModel(application) {
         return usersList.sortedByDescending { it.rank }
     }
 
-    fun getUser(): User {
+    private fun getUser(): User {
         return getUserUseCase.getUser(getApplication())
     }
 }

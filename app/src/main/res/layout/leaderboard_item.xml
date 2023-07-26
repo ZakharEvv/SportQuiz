@@ -18,8 +18,8 @@
 
             <ImageView
                 android:id="@+id/image_leaderboard_place"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 tools:src="@drawable/lock_level"
                 android:layout_gravity="center"
                 android:layout_marginStart="15dp"
@@ -27,7 +27,7 @@
 
             <TextView
                 android:id="@+id/tv_leaderboard_place"
-                android:layout_width="15dp"
+                android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:text="4"
                 android:textAlignment="center"
@@ -46,7 +46,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="18dp"
                 app:cardCornerRadius="50dp"
-                app:cardBackgroundColor="@color/teal_700">
+                app:cardBackgroundColor="@color/grey">
                 <ImageView
                     android:id="@+id/image_leaderboard_avatar"
                     android:layout_width="match_parent"

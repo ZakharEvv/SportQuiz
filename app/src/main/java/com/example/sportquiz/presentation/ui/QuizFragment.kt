@@ -1,12 +1,8 @@
 package com.example.sportquiz.presentation.ui
 
-import android.animation.ArgbEvaluator
-import android.graphics.Color
-import android.media.Image
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
@@ -20,11 +16,12 @@ import com.example.sportquiz.domain.model.SportCategory
 import com.example.sportquiz.presentation.viewmodels.QuizViewModel
 
 
-class QuizFragment(quizLevel: QuizLevel) : Fragment() {
+class QuizFragment(quizLevel: QuizLevel, sportCategory: SportCategory) : Fragment() {
 
     private lateinit var btnFirst: LinearLayout
     private lateinit var btnSecond: LinearLayout
     private lateinit var btnThird: LinearLayout
+    private lateinit var btnBack: LinearLayout
     private lateinit var tvQuestionNumber: TextView
     private lateinit var tvLevel: TextView
     private lateinit var tvCategory: TextView
@@ -36,6 +33,7 @@ class QuizFragment(quizLevel: QuizLevel) : Fragment() {
 
     private val quizLevel = quizLevel.level
     private val quizCategory = quizLevel.sportCategory
+    private val category = sportCategory
     private var questions = listOf<QuizQuestion>()
 
     private lateinit var viewModel: QuizViewModel
@@ -50,35 +48,52 @@ class QuizFragment(quizLevel: QuizLevel) : Fragment() {
         val view = inflater.inflate(R.layout.fragment_quiz, container, false)
         viewModel = ViewModelProvider(this)[QuizViewModel::class.java]
         questions = viewModel.getQuestions(quizCategory, quizLevel)
+
         initViews(view)
-        tvLevel.text = quizLevel.toString()
-        tvCategory.text = quizCategory
-
+        refreshUI(view)
         refreshQuestion()
-
         setupListeners(view)
 
         return view
     }
 
+    private fun refreshUI(view: View) {
+        tvLevel.text = quizLevel.toString()
+        tvCategory.text = quizCategory
+        imageCategory.setImageDrawable(ContextCompat.getDrawable(view.context, category.poster))
+    }
+
     private fun refreshQuestion() {
         if (questions.lastIndex < actualQuestion) {
-            if (correctAnswers==questions.size){
+            if (correctAnswers == questions.size) {
                 if (viewModel.getUserProgress(quizCategory) == quizLevel)
                     activity?.supportFragmentManager?.beginTransaction()
-                        ?.replace(R.id.fragment_container, QuizResultFragment(0, correctAnswers, questions.size))?.commit()
+                        ?.replace(
+                            R.id.fragment_container,
+                            QuizResultFragment(0, correctAnswers, questions.size)
+                        )?.commit()
                 else {
                     viewModel.saveUserProgress(quizCategory, quizLevel)
                     viewModel.saveUserRank(quizLevel * 100)
                     activity?.supportFragmentManager?.beginTransaction()
-                        ?.replace(R.id.fragment_container, QuizResultFragment(quizLevel*100, correctAnswers, questions.size))?.commit()
+                        ?.replace(
+                            R.id.fragment_container,
+                            QuizResultFragment(quizLevel * 100, correctAnswers, questions.size)
+                        )?.commit()
                 }
             } else {
                 activity?.supportFragmentManager?.beginTransaction()
-                    ?.replace(R.id.fragment_container, QuizResultFragment(0, correctAnswers, questions.size))?.commit()
+                    ?.replace(
+                        R.id.fragment_container,
+                        QuizResultFragment(0, correctAnswers, questions.size)
+                    )?.commit()
             }
         } else {
-            tvQuestionNumber.text = "${actualQuestion + 1}/${questions.size}"
+            tvQuestionNumber.text = buildString {
+                append(actualQuestion + 1)
+                append("/")
+                append(questions.size)
+            }
             tvQuestion.text = questions[actualQuestion].question
             tvFirstAnswer.text = questions[actualQuestion].answers[0]
             tvSecondAnswer.text = questions[actualQuestion].answers[1]
@@ -96,6 +111,10 @@ class QuizFragment(quizLevel: QuizLevel) : Fragment() {
         }
         btnThird.setOnClickListener {
             checkAnswer(btnThird, view, 2)
+        }
+        btnBack.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container, LevelFragment(category))?.commit()
         }
     }
 
@@ -120,6 +139,7 @@ class QuizFragment(quizLevel: QuizLevel) : Fragment() {
         tvFirstAnswer = view.findViewById(R.id.tv_first_answer)
         tvSecondAnswer = view.findViewById(R.id.tv_second_answer)
         tvThirdAnswer = view.findViewById(R.id.tv_third_answer)
+        btnBack = view.findViewById(R.id.btn_back_quiz)
     }
 
     private fun setEnabled(value: Boolean) {
@@ -138,7 +158,7 @@ class QuizFragment(quizLevel: QuizLevel) : Fragment() {
         )
         colorAnimator.duration = 1000
         val animatorSet = AnimatorSet()
-        animatorSet.playSequentially(createDelayAnimator(0), colorAnimator)
+        animatorSet.playSequentially(createDelayAnimator(), colorAnimator)
         animatorSet.start()
         animatorSet.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
@@ -149,9 +169,9 @@ class QuizFragment(quizLevel: QuizLevel) : Fragment() {
         })
     }
 
-    private fun createDelayAnimator(duration: Long): ObjectAnimator {
+    private fun createDelayAnimator(): ObjectAnimator {
         return ObjectAnimator.ofFloat(Any(), "alpha", 0f, 0f).apply {
-            this.duration = duration
+            this.duration = 0
         }
     }
 
