@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Correct answers:"
+        android:text="@string/correct_answers"
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -41,7 +41,7 @@
         android:id="@+id/tv_correct_answers_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10/10"
+        tools:text="10/10"
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -62,7 +62,7 @@
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:text="To the main"/>
+            android:text="@string/to_the_main"/>
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

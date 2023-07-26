@@ -20,10 +20,10 @@ object Database {
     )
 
     val sportCategories = listOf(
-        SportCategory("Basketball", R.drawable.category_basketball, R.drawable.basketball_poster),
-        SportCategory("Hockey", R.drawable.categoty_hockey, R.drawable.hockey_poster),
-        SportCategory("Football", R.drawable.category_football, R.drawable.football_poster),
-        SportCategory("Karate", R.drawable.category_carate, R.drawable.karate_poster)
+        SportCategory("Basketball", R.drawable.category_basketball, "https://ltdfoto.ru/images/2023/07/26/basketball_poster.jpg"),
+        SportCategory("Hockey", R.drawable.categoty_hockey, "https://ltdfoto.ru/images/2023/07/26/hockey_poster7776e5315815eaf8.jpg"),
+        SportCategory("Football", R.drawable.category_football, "https://ltdfoto.ru/images/2023/07/26/football_poster7c30701027b3edf5.jpg"),
+        SportCategory("Karate", R.drawable.category_carate, "https://ltdfoto.ru/images/2023/07/26/karate_posterb98bc88af2cea750.jpg")
     )
 
     val quizLevels = listOf(

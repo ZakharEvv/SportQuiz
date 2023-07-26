@@ -29,7 +29,7 @@
                 android:id="@+id/tv_leaderboard_place"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
-                android:text="4"
+                tools:text="4"
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -57,7 +57,7 @@
                 android:id="@+id/tv_leaderboard_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name lastname"
+                tools:text="Name lastname"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -72,10 +72,8 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="14sp"
-            android:text="1234xp"
-            android:layout_gravity="right|center_vertical"
+            tools:text="1234xp"
+            android:layout_gravity="end|center_vertical"
             android:layout_marginEnd="15dp"/>
     </FrameLayout>
-
-
 </androidx.cardview.widget.CardView>

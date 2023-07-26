@@ -20,11 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:maxWidth="200dp"
-        android:text="Choose a category and complete the quiz levels.
-        \nThe next level opens after completing the previous level.
-        \nEarn experience by answering all level questions correctly.
-        \nThe experience will be displayed in the leaderboard and your personal account.
-        \nIn your personal account, see the progress in levels for each of the categories."
+        android:text="@string/rules_dialog"
         android:textColor="@color/white" />
 
 

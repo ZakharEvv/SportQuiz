@@ -9,12 +9,12 @@ import android.widget.*
 import androidx.core.animation.*
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.sportquiz.R
 import com.example.sportquiz.domain.model.QuizLevel
 import com.example.sportquiz.domain.model.QuizQuestion
 import com.example.sportquiz.domain.model.SportCategory
 import com.example.sportquiz.presentation.viewmodels.QuizViewModel
-
 
 class QuizFragment(quizLevel: QuizLevel, sportCategory: SportCategory) : Fragment() {
 
@@ -60,7 +60,11 @@ class QuizFragment(quizLevel: QuizLevel, sportCategory: SportCategory) : Fragmen
     private fun refreshUI(view: View) {
         tvLevel.text = quizLevel.toString()
         tvCategory.text = quizCategory
-        imageCategory.setImageDrawable(ContextCompat.getDrawable(view.context, category.poster))
+        Glide
+            .with(view.context)
+            .load(category.poster)
+            .placeholder(R.drawable.quiz_category_placeholder)
+            .into(imageCategory)
     }
 
     private fun refreshQuestion() {
@@ -100,7 +104,6 @@ class QuizFragment(quizLevel: QuizLevel, sportCategory: SportCategory) : Fragmen
             tvThirdAnswer.text = questions[actualQuestion].answers[2]
         }
     }
-
 
     private fun setupListeners(view: View) {
         btnFirst.setOnClickListener {

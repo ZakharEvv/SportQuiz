@@ -2,4 +2,15 @@
     <string name="app_name">SportQuiz</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start_onboarding">START</string>
+    <string name="quizzes_fragment_level">Quizzes</string>
+    <string name="popular_quizzes">Popular quizzes</string>
+    <string name="learn_the_rules">Learn the rules</string>
+    <string name="profile_fragment">Profile</string>
+    <string name="progress_profile_fragment">Progress:</string>
+    <string name="quizzes_quiz_fragment">Quizzes</string>
+    <string name="correct_answers">Correct answers:</string>
+    <string name="to_the_main">To the main</string>
+    <string name="leaderboard_fragment">Leaderboard</string>
+    <string name="rules_dialog">Choose a category and complete the quiz levels. \nThe next level opens after completing the previous level. \nEarn experience by answering all level questions correctly. \nThe experience will be displayed in the leaderboard and your personal account. \nIn your personal account, see the progress in levels for each of the categories.</string>
 </resources>

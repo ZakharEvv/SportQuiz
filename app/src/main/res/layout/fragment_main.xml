@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Popular quizzes"
+                android:text="@string/popular_quizzes"
                 android:textSize="16sp"
                 android:layout_marginTop="75dp"
                 android:textColor="@color/black"
@@ -87,7 +87,7 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:lines="2"
-                            android:text="Learn the rules"
+                            android:text="@string/learn_the_rules"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
 

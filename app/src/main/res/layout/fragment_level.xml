@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quizzes"
+            android:text="@string/quizzes_fragment_level"
             android:textStyle="bold"
             android:textSize="14sp"
             android:textColor="@color/white"
@@ -72,8 +72,8 @@
                             android:id="@+id/tv_category_name_level"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sport"
-                            android:textSize="14dp"
+                            tools:text="Sport"
+                            android:textSize="14sp"
                             android:textColor="#29304D"
                             android:textStyle="bold"
                             android:layout_gravity="center"/>
@@ -90,7 +90,7 @@
                     android:id="@+id/tv_user_progress_level"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0/3"
+                    tools:text="0/3"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:textSize="22sp"
